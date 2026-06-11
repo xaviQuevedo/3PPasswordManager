@@ -1,7 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|c:\\3ppassword\\backend\\3ppassword.backend\\services\\implementations\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|solutionrelative:services\\implementations\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|c:\\3ppassword\\backend\\3ppassword.backend\\services\\interfaces\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|solutionrelative:services\\interfaces\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|c:\\3ppassword\\backend\\3ppassword.backend\\security\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|solutionrelative:security\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|c:\\3ppassword\\backend\\3ppassword.backend\\models\\entities\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|solutionrelative:models\\entities\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|c:\\3ppassword\\backend\\3ppassword.backend\\models\\dtos\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|solutionrelative:models\\dtos\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|c:\\3ppassword\\backend\\3ppassword.backend\\data\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|solutionrelative:data\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|c:\\3ppassword\\backend\\3ppassword.backend\\controllers\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{4ED696FE-0629-D93B-7C2E-108389917502}|3PPASSWORD.BACKEND.csproj|solutionrelative:controllers\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,6 +59,101 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Services\\Implementations\\.gitkeep",
+              "RelativeDocumentMoniker": "Services\\Implementations\\.gitkeep",
+              "ToolTip": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Services\\Implementations\\.gitkeep",
+              "RelativeToolTip": "Services\\Implementations\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T08:45:23.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Services\\Interfaces\\.gitkeep",
+              "RelativeDocumentMoniker": "Services\\Interfaces\\.gitkeep",
+              "ToolTip": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Services\\Interfaces\\.gitkeep",
+              "RelativeToolTip": "Services\\Interfaces\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T08:44:58.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Security\\.gitkeep",
+              "RelativeDocumentMoniker": "Security\\.gitkeep",
+              "ToolTip": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Security\\.gitkeep",
+              "RelativeToolTip": "Security\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T08:44:35.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Models\\Entities\\.gitkeep",
+              "RelativeDocumentMoniker": "Models\\Entities\\.gitkeep",
+              "ToolTip": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Models\\Entities\\.gitkeep",
+              "RelativeToolTip": "Models\\Entities\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T08:44:10.292Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Models\\DTOs\\.gitkeep",
+              "RelativeDocumentMoniker": "Models\\DTOs\\.gitkeep",
+              "ToolTip": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Models\\DTOs\\.gitkeep",
+              "RelativeToolTip": "Models\\DTOs\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T08:43:55.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Data\\.gitkeep",
+              "RelativeDocumentMoniker": "Data\\.gitkeep",
+              "ToolTip": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Data\\.gitkeep",
+              "RelativeToolTip": "Data\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T08:41:52.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Controllers\\.gitkeep",
+              "RelativeDocumentMoniker": "Controllers\\.gitkeep",
+              "ToolTip": "C:\\3PPASSWORD\\backend\\3PPASSWORD.BACKEND\\Controllers\\.gitkeep",
+              "RelativeToolTip": "Controllers\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-06-11T08:41:07.099Z",
+              "EditorCaption": ""
             }
           ]
         }
