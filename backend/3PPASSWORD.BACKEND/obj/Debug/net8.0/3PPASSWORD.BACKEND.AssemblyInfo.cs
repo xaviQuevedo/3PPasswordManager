@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("3PPASSWORD.BACKEND")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5aab8b6e115cfb4e3e3a676c9ee5f8c6608d8f17")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24757937edbbba699059311e9bf65569f0b1c1e3")]
 [assembly: System.Reflection.AssemblyProductAttribute("3PPASSWORD.BACKEND")]
 [assembly: System.Reflection.AssemblyTitleAttribute("3PPASSWORD.BACKEND")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

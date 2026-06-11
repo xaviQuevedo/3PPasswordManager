@@ -51,4 +51,38 @@ public class CredentialsController : ControllerBase
         }
         return Ok(credential);
     }
+
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update( 
+        Guid id, 
+        [FromBody] UpdateCredentialDto dto)
+    {
+        try
+        {
+            var result = await _credentialService.UpdateAsync(id, dto);
+
+            if (result is null)
+            {
+                return NotFound("Credential not found");
+            }
+
+            return Ok(result);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var deleted = await _credentialService.DeleteAsync(id);
+
+        if (!deleted)
+        {
+            return NotFound("Credential not found");
+        }
+        return NoContent();
+    }
 }

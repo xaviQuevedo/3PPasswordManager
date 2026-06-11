@@ -71,4 +71,48 @@ public class CredentialService : ICredentialService
             .FirstOrDefaultAsync();
     }
 
+    public async Task<CredentialDto?> UpdateAsync(Guid id, UpdateCredentialDto dto)
+    {
+        if (dto.Password != dto.RepeatPassword)
+        {
+            throw new ArgumentException("Passwords do not match");
+        }
+
+        var credential = await _context.Credentials.FindAsync(id);
+
+        if (credential is null)
+        {
+            return null;
+        }
+
+        credential.SystemName = dto.SystemName;
+        credential.EncryptedPassword = dto.Password;
+        credential.UpdatedAt = DateTime.UtcNow;
+
+        await _context.SaveChangesAsync();
+
+        return new CredentialDto
+        {
+            Id = credential.Id,
+            SystemName = credential.SystemName,
+            CreatedAt = credential.CreatedAt,
+            UpdatedAt = credential.UpdatedAt
+        };
+    }
+
+    public async Task<bool> DeleteAsync(Guid id)
+    {
+        var credential = await _context.Credentials.FindAsync(id);
+
+        if (credential is null)
+        {
+            return false;
+        }
+
+        _context.Credentials.Remove(credential);
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
+
 }
