@@ -85,4 +85,16 @@ public class CredentialsController : ControllerBase
         }
         return NoContent();
     }
+    [HttpGet("{id:guid}/password")]
+    public async Task<IActionResult> GetPasswordById(Guid id)
+    {
+        var result = await _credentialService.GetPasswordByIdAsync(id);
+
+        if (result is null)
+        {
+            return NotFound("Credential not found");
+        }
+
+        return Ok(result);
+    }
 }

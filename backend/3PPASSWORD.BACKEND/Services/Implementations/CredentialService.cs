@@ -1,8 +1,8 @@
 ﻿using _3PPASSWORD.BACKEND.Data;
 using _3PPASSWORD.BACKEND.Models.DTOs;
 using _3PPASSWORD.BACKEND.Models.Entities;
-using _3PPASSWORD.BACKEND.Services.Interfaces;
 using _3PPASSWORD.BACKEND.Security;
+using _3PPASSWORD.BACKEND.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace _3PPASSWORD.BACKEND.Services.Implementations;
@@ -131,6 +131,25 @@ public class CredentialService : ICredentialService
         await _context.SaveChangesAsync();
 
         return true;
+    }
+    public async Task<CredentialPasswordDto?> GetPasswordByIdAsync(Guid id)
+    {
+        var credential = await _context.Credentials
+            .FirstOrDefaultAsync(c => c.Id == id);
+
+        if (credential is null)
+        {
+            return null;
+        }
+        var decryptedPassword = _encryptionService.Decrypt(
+            credential.EncryptedPassword);
+
+        return new CredentialPasswordDto
+        {
+            Id = credential.Id,
+            SystemName = credential.SystemName,
+            Password = decryptedPassword
+        };
     }
 
 }

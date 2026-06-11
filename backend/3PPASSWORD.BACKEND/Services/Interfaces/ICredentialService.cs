@@ -9,4 +9,5 @@ public interface ICredentialService
     Task<CredentialDto> GetByIdAsync(Guid id);
     Task<CredentialDto?> UpdateAsync(Guid id, UpdateCredentialDto dto);
     Task<bool> DeleteAsync(Guid id);
+    Task<CredentialPasswordDto?> GetPasswordByIdAsync(Guid id);
 }
