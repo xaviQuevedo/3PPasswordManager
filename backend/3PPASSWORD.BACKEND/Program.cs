@@ -1,5 +1,7 @@
 using _3PPASSWORD.BACKEND.Data;
 using Microsoft.EntityFrameworkCore;
+using _3PPASSWORD.BACKEND.Services.Interfaces;
+using _3PPASSWORD.BACKEND.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ICredentialService, CredentialService>();
 
 var app = builder.Build();
 
