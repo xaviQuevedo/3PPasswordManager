@@ -9,6 +9,8 @@
 bin/
 obj/
 
+appsettings.Development.json
+
 [Bb]in/
 [Oo]bj/
 
