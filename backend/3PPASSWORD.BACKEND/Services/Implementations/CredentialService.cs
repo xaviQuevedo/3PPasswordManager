@@ -2,6 +2,7 @@
 using _3PPASSWORD.BACKEND.Models.DTOs;
 using _3PPASSWORD.BACKEND.Models.Entities;
 using _3PPASSWORD.BACKEND.Services.Interfaces;
+using _3PPASSWORD.BACKEND.Security;
 using Microsoft.EntityFrameworkCore;
 
 namespace _3PPASSWORD.BACKEND.Services.Implementations;
@@ -9,10 +10,12 @@ namespace _3PPASSWORD.BACKEND.Services.Implementations;
 public class CredentialService : ICredentialService
 {
     private readonly ApplicationDbContext _context;
+    private readonly IEncryptionService _encryptionService;
 
-    public CredentialService(ApplicationDbContext context)
+    public CredentialService(ApplicationDbContext context, IEncryptionService encryptionService)
     {
         _context = context;
+        _encryptionService = encryptionService;
     }
 
     public async Task<List<CredentialDto>> GetAllAsync()
@@ -46,7 +49,7 @@ public class CredentialService : ICredentialService
             Username = dto.Username,
             Url = dto.Url,
             Notes = dto.Notes,
-            EncryptedPassword = dto.Password,
+            EncryptedPassword = _encryptionService.Encrypt(dto.Password),
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
         };
@@ -98,7 +101,7 @@ public class CredentialService : ICredentialService
         }
 
         credential.SystemName = dto.SystemName;
-        credential.EncryptedPassword = dto.Password;
+        credential.EncryptedPassword = _encryptionService.Encrypt(dto.Password);
         credential.UpdatedAt = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();
