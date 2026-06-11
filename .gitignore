@@ -1,73 +1,26 @@
-# =========================
 # Visual Studio
-# =========================
 .vs/
-*.user
 *.suo
+*.user
 *.userosscache
 *.sln.docstates
 
-# =========================
 # .NET
-# =========================
 bin/
 obj/
 
 [Bb]in/
 [Oo]bj/
 
-# Rider / ReSharper
-_ReSharper*/
-*.DotSettings.user
-
-# =========================
-# Logs
-# =========================
-*.log
-
-# =========================
-# Environment Variables
-# =========================
-.env
-.env.*
-!.env.example
-
-# =========================
-# React / Node.js
-# =========================
+# React
 node_modules/
 dist/
 build/
 
-# npm
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Logs
+*.log
 
-# =========================
-# Coverage
-# =========================
-coverage/
-
-# =========================
-# OS Files
-# =========================
-.DS_Store
-Thumbs.db
-
-# =========================
-# Publish
-# =========================
-publish/
-
-# =========================
-# Database backups
-# =========================
-*.bak
-*.backup
-
-# =========================
-# Temporary files
-# =========================
-tmp/
-temp/
+# Environment
+.env
+.env.*
+!.env.example
