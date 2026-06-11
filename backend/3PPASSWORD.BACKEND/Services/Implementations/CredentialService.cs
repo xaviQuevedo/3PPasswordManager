@@ -23,6 +23,9 @@ public class CredentialService : ICredentialService
             {
                 Id = c.Id,
                 SystemName = c.SystemName,
+                Username = c.Username,
+                Url = c.Url,
+                Notes = c.Notes,
                 CreatedAt = c.CreatedAt,
                 UpdatedAt = c.UpdatedAt
             })
@@ -40,6 +43,9 @@ public class CredentialService : ICredentialService
         {
             Id = Guid.NewGuid(),
             SystemName = dto.SystemName,
+            Username = dto.Username,
+            Url = dto.Url,
+            Notes = dto.Notes,
             EncryptedPassword = dto.Password,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow
@@ -53,6 +59,9 @@ public class CredentialService : ICredentialService
         {
             Id = credential.Id,
             SystemName = credential.SystemName,
+            Username = credential.Username,
+            Url = credential.Url,
+            Notes = credential.Notes,
             CreatedAt = credential.CreatedAt,
             UpdatedAt = credential.UpdatedAt
         };
@@ -65,6 +74,9 @@ public class CredentialService : ICredentialService
             {
                 Id = c.Id,
                 SystemName = c.SystemName,
+                Username = c.Username,
+                Url = c.Url,
+                Notes = c.Notes,
                 CreatedAt = c.CreatedAt,
                 UpdatedAt = c.UpdatedAt
             })
@@ -95,6 +107,9 @@ public class CredentialService : ICredentialService
         {
             Id = credential.Id,
             SystemName = credential.SystemName,
+            Username = credential.Username,
+            Url = credential.Url,
+            Notes = credential.Notes,
             CreatedAt = credential.CreatedAt,
             UpdatedAt = credential.UpdatedAt
         };
