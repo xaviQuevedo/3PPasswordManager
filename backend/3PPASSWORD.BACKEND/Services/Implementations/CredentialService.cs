@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using _3PPASSWORD.BACKEND.Data;
 using _3PPASSWORD.BACKEND.Models.DTOs;
+using _3PPASSWORD.BACKEND.Models.Entities;
 using _3PPASSWORD.BACKEND.Services.Interfaces;
 
 namespace _3PPASSWORD.BACKEND.Services.Implementations;
@@ -26,5 +27,34 @@ public class CredentialService : ICredentialService
                 UpdatedAt = c.UpdatedAt
             })
             .ToListAsync();
+    }
+
+    public async Task<CredentialDto> CreateAsync(CreateCredentialDto dto)
+    {
+        if (dto.Password != dto.RepeatPassword)
+        {
+            throw new ArgumentException("Passwords do not match");
+        }
+
+        var credential = new Credential
+        {
+            Id = Guid.NewGuid(),
+            SystemName = dto.SystemName,
+            EncryptedPassword = dto.Password,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+
+        _context.Credentials.Add(credential);
+
+        await _context.SaveChangesAsync();
+
+        return new CredentialDto
+        {
+            Id = credential.Id,
+            SystemName = credential.SystemName,
+            CreatedAt = credential.CreatedAt,
+            UpdatedAt = credential.UpdatedAt
+        };
     }
 }
