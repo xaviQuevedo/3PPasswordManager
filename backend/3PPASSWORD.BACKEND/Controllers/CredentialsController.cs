@@ -40,4 +40,15 @@ public class CredentialsController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        var credential = await _credentialService.GetByIdAsync(id);
+        if (credential is null)
+        {
+            return NotFound("Credential not found");
+        }
+        return Ok(credential);
+    }
 }

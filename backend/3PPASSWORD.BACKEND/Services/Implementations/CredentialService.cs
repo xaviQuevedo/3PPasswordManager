@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using _3PPASSWORD.BACKEND.Data;
+﻿using _3PPASSWORD.BACKEND.Data;
 using _3PPASSWORD.BACKEND.Models.DTOs;
 using _3PPASSWORD.BACKEND.Models.Entities;
 using _3PPASSWORD.BACKEND.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace _3PPASSWORD.BACKEND.Services.Implementations;
 
@@ -57,4 +57,18 @@ public class CredentialService : ICredentialService
             UpdatedAt = credential.UpdatedAt
         };
     }
+    public async Task<CredentialDto?> GetByIdAsync(Guid id)
+    {
+        return await _context.Credentials
+            .Where(c => c.Id == id)
+            .Select(c => new CredentialDto
+            {
+                Id = c.Id,
+                SystemName = c.SystemName,
+                CreatedAt = c.CreatedAt,
+                UpdatedAt = c.UpdatedAt
+            })
+            .FirstOrDefaultAsync();
+    }
+
 }

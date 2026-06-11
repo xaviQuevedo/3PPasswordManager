@@ -6,4 +6,5 @@ public interface ICredentialService
 {
     Task<List<CredentialDto>> GetAllAsync();
     Task<CredentialDto> CreateAsync(CreateCredentialDto dto);
+    Task<CredentialDto> GetByIdAsync(Guid id);
 }
