@@ -19,6 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICredentialService, CredentialService>();
 builder.Services.AddScoped<IEncryptionService, EncryptionService>();
+builder.Services.AddScoped<IPasswordGeneratorService, PasswordGeneratorService>();
 
 var app = builder.Build();
 
