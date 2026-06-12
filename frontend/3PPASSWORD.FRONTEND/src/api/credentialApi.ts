@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Credential, CreateCredencialRequest, CredentialPassword } from "../types/credential";
+import type { Credential, CreateCredencialRequest, CredentialPassword, UpdateCredentialRequest } from "../types/credential";
 
 const API_BASE_URL = "https://localhost:7230/api";
 
@@ -29,3 +29,13 @@ export async function getCredentialPassword(id: string): Promise<CredentialPassw
     return response.data;
 }
 
+export async function updateCredential(
+    id: string,
+    data: UpdateCredentialRequest): Promise<Credential> {
+    const response = await axios.put<Credential>(
+        `${API_BASE_URL}/credentials/${id}`,
+        data
+    );
+
+    return response.data;
+}

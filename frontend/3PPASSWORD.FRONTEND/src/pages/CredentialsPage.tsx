@@ -17,7 +17,15 @@ export default function CredentialPage() {
     const [passwordModalOpen, setPasswordModalOpen] = useState(false);
     const [selectedPassword, setSelectedPassword] = useState("");
     const [selectedSystem, setSelectedSystem] = useState("");
+    const [modalMode, setModalMode] = useState<"create" | "edit">("create");
+    const [credentialToEdit, setCredentialToEdit] = useState<Credential | null>(null);
 
+    const handleEdit = (credential: Credential) => {
+        setCredentialToEdit(credential);
+        setModalMode("edit");
+        setModalOpen(true);
+    }
+    
     const handleViewPassword = async(id:string) => {
         const result = await getCredentialPassword(id);
         
@@ -79,7 +87,7 @@ export default function CredentialPage() {
 
                     <Button
                         icon={<EditOutlined />}
-                        //onClick={() => handleEdit(record)}
+                        onClick={() => handleEdit(record)}
                     >
                         Edit
                     </Button>
@@ -107,7 +115,11 @@ export default function CredentialPage() {
             <Button
                 type="primary"
                 icon={<PlusOutlined />}
-                onClick={() => setModalOpen(true)}
+                onClick={() => {
+                    setCredentialToEdit(null);
+                    setModalMode("create")
+                    setModalOpen(true)
+                }}
                 style={{ marginBottom: 16 }}
             >
                 Nueva contraseña
@@ -115,8 +127,10 @@ export default function CredentialPage() {
 
             <CredentialFormModal
                 open={modalOpen}
+                mode={modalMode}
+                credentialToEdit={credentialToEdit}
                 onClose={() => setModalOpen(false)}
-                onCreated={loadCredentials}
+                onSaved={loadCredentials}
             />
 
             <Table

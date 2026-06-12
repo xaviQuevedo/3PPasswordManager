@@ -1,33 +1,58 @@
+import { useEffect } from "react";
 import { Form, Input, Modal } from "antd";
-import { createCredential } from "../api/credentialApi";
-import type { CreateCredencialRequest } from "../types/credential";
+import { createCredential, updateCredential } from "../api/credentialApi";
+import type { Credential, CreateCredencialRequest } from "../types/credential";
 
 interface Props {
     open: boolean;
+    mode: "create" | "edit";
+    credentialToEdit?: Credential | null;
     onClose: () => void;
-    onCreated: () => void;
+    onSaved: () => void;
 }
 
 export default function CredentialFormModal({
     open,
+    mode,
+    credentialToEdit,
     onClose,
-    onCreated,
+    onSaved,
 }: Props) {
     const [form] = Form.useForm<CreateCredencialRequest>();
+
+    useEffect(() => {
+        if (mode === "edit" && credentialToEdit){
+            form.setFieldsValue({
+                systemName: credentialToEdit.systemName,
+                username: credentialToEdit.username,
+                url:credentialToEdit.url,
+                notes: credentialToEdit.notes,
+                password: "",
+                repeatPassword: "",
+            });
+        }
+        if (mode === "create"){
+            form.resetFields();
+        }
+    }, [mode, credentialToEdit, form])
 
     const handleSubmit = async () => {
         const values = await form.validateFields();
 
-        await createCredential(values);
+        if (mode === "edit" && credentialToEdit) {
+            await updateCredential(credentialToEdit.id, values);
+        } else {
+            await createCredential(values);
+        }
 
         form.resetFields();
-        onCreated();
+        onSaved();
         onClose();
     };
 
     return (
         <Modal
-            title="Nueva contraseña"
+            title={mode === "create" ? "Nueva contraseña": "Editar contraseña"}
             open={open}
             onOk={handleSubmit}
             onCancel={onClose}
