@@ -16,3 +16,9 @@ export interface CreateCredencialRequest {
     repeatPassword: string;
     notes: string;
 }
+
+export interface CredentialPassword{
+    id: string;
+    systemName: string;
+    password: string;
+}

@@ -1,18 +1,31 @@
 import { useEffect, useState } from "react";
-import { Table, Typography, Alert, Spin, Button } from "antd";
-import type { ColumnsType} from "antd/es/table";
-import { getCredentials } from "../api/credentialApi";
+import { Table, Typography, Alert, Spin, Button, Space } from "antd";
+import type { ColumnsType } from "antd/es/table";
+import { getCredentialPassword, getCredentials } from "../api/credentialApi";
 import type { Credential } from "../types/credential";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, EyeOutlined, EditOutlined } from "@ant-design/icons";
 import CredentialFormModal from "../components/CredentialFormModal";
+import PasswordModal from "../components/PasswordModal";
 
 const { Title } = Typography;
 
-export default function CredentialPage(){
+export default function CredentialPage() {
     const [credentials, setCredentials] = useState<Credential[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
+    const [passwordModalOpen, setPasswordModalOpen] = useState(false);
+    const [selectedPassword, setSelectedPassword] = useState("");
+    const [selectedSystem, setSelectedSystem] = useState("");
+
+    const handleViewPassword = async(id:string) => {
+        const result = await getCredentialPassword(id);
+        
+        setSelectedPassword(result.password);
+        setSelectedSystem(result.systemName);
+
+        setPasswordModalOpen(true);
+    };
 
     const loadCredentials = async () => {
         try {
@@ -20,16 +33,16 @@ export default function CredentialPage(){
             const data = await getCredentials();
             setCredentials(data);
         }
-        catch{
+        catch {
             setError("Error loading credentials.");
-        } finally{
+        } finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
         loadCredentials();
-    },[]);
+    }, []);
 
     const columns: ColumnsType<Credential> = [
         {
@@ -44,17 +57,38 @@ export default function CredentialPage(){
         },
         {
             title: "URL",
-            dataIndex : "url",
+            dataIndex: "url",
             key: "url"
         },
         {
             title: "Notes",
             dataIndex: "notes",
             key: "notes",
-        }, 
+        },
+        {
+            title: "Actions",
+            key: "actions",
+            render: (_, record) => (
+                <Space>
+                    <Button
+                        icon={<EyeOutlined />}
+                        onClick={() => handleViewPassword(record.id)}
+                    >
+                        View
+                    </Button>
+
+                    <Button
+                        icon={<EditOutlined />}
+                        //onClick={() => handleEdit(record)}
+                    >
+                        Edit
+                    </Button>
+                </Space>
+            ),
+        }
     ];
 
-    if (loading){
+    if (loading) {
         return <Spin />;
     }
 
@@ -64,32 +98,40 @@ export default function CredentialPage(){
 
             {error && (
                 <Alert
-                type="error"
-                title={error}
-                showIcon
-                style={{ marginBottom: 16 }}
+                    type="error"
+                    title={error}
+                    showIcon
+                    style={{ marginBottom: 16 }}
                 />
             )}
             <Button
-            type="primary"
-            icon={<PlusOutlined />}
-            onClick={() => setModalOpen(true)}
-            style={{ marginBottom: 16}}
+                type="primary"
+                icon={<PlusOutlined />}
+                onClick={() => setModalOpen(true)}
+                style={{ marginBottom: 16 }}
             >
                 Nueva contraseña
             </Button>
 
             <CredentialFormModal
-            open={modalOpen}
-            onClose={()=> setModalOpen(false)}
-            onCreated={loadCredentials}
+                open={modalOpen}
+                onClose={() => setModalOpen(false)}
+                onCreated={loadCredentials}
             />
 
             <Table
-            rowKey="id"
-            columns={columns}
-            dataSource={credentials}
+                rowKey="id"
+                columns={columns}
+                dataSource={credentials}
             />
+
+            <PasswordModal
+            open={passwordModalOpen}
+            password={selectedPassword}
+            systemName={selectedSystem}
+            onClose={() => setPasswordModalOpen(false)}
+            />
+
         </div>
     );
 }
