@@ -1,4 +1,4 @@
-import { Modal, Input, Button, Space } from "antd";
+import { Modal, Input, Button, Space, message } from "antd";
 
 interface Props {
     open: boolean;
@@ -15,6 +15,7 @@ export default function PasswordModal({
 }: Props) {
     const copyPassword = async () => {
         await navigator.clipboard.writeText(password);
+        message.success("Contraseña copiada al portapapeles");
     };
 
     return (
