@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Table, Typography, Alert, Spin, Button, Space } from "antd";
+import { Table, Typography, Alert, Spin, Button, Space, Card, Row, Col, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { getCredentialPassword, getCredentials } from "../api/credentialApi";
 import type { Credential } from "../types/credential";
@@ -25,10 +25,10 @@ export default function CredentialPage() {
         setModalMode("edit");
         setModalOpen(true);
     }
-    
-    const handleViewPassword = async(id:string) => {
+
+    const handleViewPassword = async (id: string) => {
         const result = await getCredentialPassword(id);
-        
+
         setSelectedPassword(result.password);
         setSelectedSystem(result.systemName);
 
@@ -57,6 +57,7 @@ export default function CredentialPage() {
             title: "System",
             dataIndex: "systemName",
             key: "systemName",
+            render: (value: string) => <Tag>{value}</Tag>,
         },
         {
             title: "Username",
@@ -66,7 +67,15 @@ export default function CredentialPage() {
         {
             title: "URL",
             dataIndex: "url",
-            key: "url"
+            key: "url",
+            render: (url: string) =>
+                url ? (
+                    <a href={url} target="_blank" rel="noreferrer">
+                        {url}
+                    </a>
+                ) : (
+                    "-"
+                ),
         },
         {
             title: "Notes",
@@ -101,29 +110,47 @@ export default function CredentialPage() {
     }
 
     return (
-        <div style={{ padding: 24 }}>
-            <Title level={2}>Password Manager</Title>
+        <div style={{ padding: 32, background: "#f5f5f5", minHeight: "100vh" }}>
+            <Card>
+                <Row justify="space-between" align="middle" style={{ marginBottom: 24 }}>
+                    <Col>
+                        <Title level={2} style={{ margin: 0 }}>
+                            Password Manager
+                        </Title>
+                        <p style={{ margin: 0, color: "#666" }}>
+                            Gestión segura de credenciales corporativas
+                        </p>
+                    </Col>
 
-            {error && (
-                <Alert
-                    type="error"
-                    title={error}
-                    showIcon
-                    style={{ marginBottom: 16 }}
+                    <Col>
+                        <Button
+                            type="primary"
+                            icon={<PlusOutlined />}
+                            onClick={() => {
+                                setCredentialToEdit(null);
+                                setModalMode("create");
+                                setModalOpen(true);
+                            }}>
+                            Nueva contraseña
+                        </Button>
+                    </Col>
+                </Row>
+
+                {error && (
+                    <Alert
+                        type="error"
+                        title={error}
+                        showIcon
+                        style={{ marginBottom: 16 }}
+                    />
+                )}
+                <Table
+                    rowKey="id"
+                    columns={columns}
+                    dataSource={credentials}
+                    pagination={{ pageSize: 8 }}
                 />
-            )}
-            <Button
-                type="primary"
-                icon={<PlusOutlined />}
-                onClick={() => {
-                    setCredentialToEdit(null);
-                    setModalMode("create")
-                    setModalOpen(true)
-                }}
-                style={{ marginBottom: 16 }}
-            >
-                Nueva contraseña
-            </Button>
+            </Card>
 
             <CredentialFormModal
                 open={modalOpen}
@@ -133,19 +160,12 @@ export default function CredentialPage() {
                 onSaved={loadCredentials}
             />
 
-            <Table
-                rowKey="id"
-                columns={columns}
-                dataSource={credentials}
-            />
-
             <PasswordModal
-            open={passwordModalOpen}
-            password={selectedPassword}
-            systemName={selectedSystem}
-            onClose={() => setPasswordModalOpen(false)}
+                open={passwordModalOpen}
+                password={selectedPassword}
+                systemName={selectedSystem}
+                onClose={() => setPasswordModalOpen(false)}
             />
-
         </div>
     );
 }
