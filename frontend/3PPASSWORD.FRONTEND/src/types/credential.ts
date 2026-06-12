@@ -7,3 +7,12 @@ export interface Credential {
     createdAt: string;
     updateAt: string;
 }
+
+export interface CreateCredencialRequest {
+    systemName: string;
+    username: string;
+    url: string;
+    password: string;
+    repeatPassword: string;
+    notes: string;
+}

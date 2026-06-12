@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Table, Typography, Alert, Spin } from "antd";
+import { Table, Typography, Alert, Spin, Button } from "antd";
 import type { ColumnsType} from "antd/es/table";
 import { getCredentials } from "../api/credentialApi";
 import type { Credential } from "../types/credential";
+import { PlusOutlined } from "@ant-design/icons";
+import CredentialFormModal from "../components/CredentialFormModal";
 
 const { Title } = Typography;
 
@@ -10,6 +12,7 @@ export default function CredentialPage(){
     const [credentials, setCredentials] = useState<Credential[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [modalOpen, setModalOpen] = useState(false);
 
     const loadCredentials = async () => {
         try {
@@ -67,6 +70,21 @@ export default function CredentialPage(){
                 style={{ marginBottom: 16 }}
                 />
             )}
+            <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => setModalOpen(true)}
+            style={{ marginBottom: 16}}
+            >
+                Nueva contraseña
+            </Button>
+
+            <CredentialFormModal
+            open={modalOpen}
+            onClose={()=> setModalOpen(false)}
+            onCreated={loadCredentials}
+            />
+
             <Table
             rowKey="id"
             columns={columns}
