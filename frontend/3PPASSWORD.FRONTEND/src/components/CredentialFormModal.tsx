@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { Form, Input, Modal } from "antd";
-import { createCredential, updateCredential } from "../api/credentialApi";
-import type { Credential, CreateCredencialRequest } from "../types/credential";
+import { Form, Input, Modal, Button } from "antd";
+import { createCredential, updateCredential, generatePassword } from "../api/credentialApi";
+import type { Credential, CreateCredentialRequest } from "../types/credential";
 
 interface Props {
     open: boolean;
@@ -18,7 +18,22 @@ export default function CredentialFormModal({
     onClose,
     onSaved,
 }: Props) {
-    const [form] = Form.useForm<CreateCredencialRequest>();
+    const [form] = Form.useForm<CreateCredentialRequest>();
+
+    const handleGeneratePassword = async () => {
+        const result = await generatePassword({
+            length: 16,
+            includeUppercase: true,
+            includeLowercase: true,
+            includeNumbers: true,
+            includeSymbols: true,
+        });
+
+        form.setFieldsValue({
+            password: result.password,
+            repeatPassword: result.password,
+        });
+    };
 
     useEffect(() => {
         if (mode === "edit" && credentialToEdit){
@@ -107,6 +122,13 @@ export default function CredentialFormModal({
                 >
                     <Input.Password placeholder="Repetir contraseña" />
                 </Form.Item>
+                <Button
+                type="dashed"
+                onClick={handleGeneratePassword}
+                style={{marginBottom: 16}}
+                >
+                    Generar contraseña segura
+                </Button>
 
                 <Form.Item label="Notas" name="notes">
                     <Input.TextArea rows={3} />

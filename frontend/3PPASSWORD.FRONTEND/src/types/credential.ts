@@ -8,7 +8,7 @@ export interface Credential {
     updateAt: string;
 }
 
-export interface CreateCredencialRequest {
+export interface CreateCredentialRequest {
     systemName: string;
     username: string;
     url: string;
@@ -17,8 +17,29 @@ export interface CreateCredencialRequest {
     notes: string;
 }
 
-export interface CredentialPassword{
+export interface CredentialPassword {
     id: string;
     systemName: string;
+    password: string;
+}
+
+export interface UpdateCredentialRequest {
+    systemName: string;
+    username: string;
+    url: string;
+    password: string;
+    repeatPassword: string;
+    notes: string;
+}
+
+export interface PasswordGeneratorOptions {
+    length: number;
+    includeUppercase: boolean;
+    includeLowercase: boolean;
+    includeNumbers: boolean;
+    includeSymbols: boolean;
+}
+
+export interface GeneratedPassword {
     password: string;
 }
